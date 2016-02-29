@@ -1,0 +1,16 @@
+.widget {
+	display: flex;
+	width: 969px;
+	height: 234px;
+	border-top: 16px solid #F4AF01;
+	background: #f6f6f6;
+
+	&__area {
+		flex: 1;
+		height: 100%;
+
+		& + & {
+			border-left: 1px solid #f2f2f2;
+		}
+	}
+}
