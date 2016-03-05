@@ -1,16 +1,29 @@
+html {
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
 .widget {
+	@mainBorder: 1px solid rgba(236, 236, 236, 0.9);
+//f2f2f2
 	display: flex;
-	width: 969px;
-	height: 234px;
-	border-top: 16px solid #F4AF01;
-	background: #f6f6f6;
+	width: 1406px;
+	height: 360px;
+	padding: 36px 0 0 0;
+	border: @mainBorder;
+	background: #f7f7f7 repeating-linear-gradient(135deg, transparent 0, transparent 7px, #f2f2f2 7px, #f2f2f2 7.5px);
+	background-size: 11px 11px;
+	font-family: 'Source Sans Pro', sans-serif;
 
 	&__area {
 		flex: 1;
 		height: 100%;
 
 		& + & {
-			border-left: 1px solid #f2f2f2;
+			border-left: @mainBorder;
 		}
 	}
 }
