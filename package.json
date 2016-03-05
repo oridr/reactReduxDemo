@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "classnames": "^2.2.3",
     "history": "^1.17.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

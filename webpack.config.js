@@ -26,6 +26,10 @@ module.exports = {
 			{
 				test: /\.less$/,
 				loader: 'style!css!less'
+			},
+			{
+				test: /\.(png|jpg)$/,
+				loader: 'url?limit=20480&name=[name].[ext]'
 			}
 		]
 	},
