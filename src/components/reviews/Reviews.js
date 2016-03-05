@@ -4,6 +4,9 @@ require('./reviews.less');
 
 import React, { PropTypes } from 'react';
 import Review from './review/Review';
+import Pager from './pager/Pager';
+
+const pageClick = (page) => console.log(page);
 
 const Reviews = ({ numberOfTotalReviews, currentReviews, currentPage, numberOfPages }) => (
 	<section className="reviews">
@@ -16,6 +19,11 @@ const Reviews = ({ numberOfTotalReviews, currentReviews, currentPage, numberOfPa
 				))
 			}
 		</ul>
+
+		<div className="reviews__pager">
+			<Pager currentPage={currentPage} totalPages={numberOfPages} onPageClick={pageClick} />
+		</div>
+
 	</section>
 );
 

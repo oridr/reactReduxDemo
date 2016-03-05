@@ -1,0 +1,24 @@
+.pager {
+	display: inline-block;
+	text-align: left;
+
+	&__page {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: #bbb;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+		cursor: pointer;
+
+		&:not(first-child) {
+			margin: 0 3px 0 0;
+		}
+
+		&--active {
+			background: #333;
+		}
+	}
+}
