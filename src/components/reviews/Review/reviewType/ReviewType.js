@@ -2,7 +2,7 @@
 
 require('./reviewType.less');
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
 const ReviewType = ({ type }) => (
@@ -14,5 +14,9 @@ const ReviewType = ({ type }) => (
 		})
 	} />
 );
+
+ReviewType.propTypes = {
+	type: PropTypes.string
+};
 
 export default ReviewType;
