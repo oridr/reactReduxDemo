@@ -1,6 +1,6 @@
 'use strict';
 
-require('ratingStars');
+require('./ratingStars.less');
 
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
@@ -15,9 +15,11 @@ const RatingStars = ({ score, maxScore }) => {
 
 	for(let i = 0; i < maxStars; i++) {
 		stars.push(
-			<div class="ratingStars__star"
+			<div className="ratingStars__star"
+				 key={i}
 				 className={
 				 	classNames({
+				 		'ratingStars__star': true,
 				 		'ratingStars__star--half': i === maxStars - 1 && addition === 0.5
 				 	})
 				 }>
@@ -35,7 +37,7 @@ const RatingStars = ({ score, maxScore }) => {
 			</span>
 		</div>
 	);
-}
+};
 
 RatingStars.propTypes = {
 	score: PropTypes.number.isRequired,
