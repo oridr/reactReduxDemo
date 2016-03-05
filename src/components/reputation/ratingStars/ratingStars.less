@@ -2,6 +2,7 @@
 
 	&__score {
 		display: inline-block;
+		margin: 0 29px 0 0;
 		font-size: 70px;
 		font-weight: 700;
 		color: #7c7c7c;
@@ -9,15 +10,20 @@
 	}
 
 	&__star {
+		@starWidth: 55px;
+
 		display: inline-block;
-		width: 20px;
-		height: 20px;
-		background: gold;
+		width: @starWidth;
+		height: 52px;
+		background: url('../../../assets/star.png');
 		vertical-align: middle;
-		margin-right: 5px;
+
+		& + & {
+			margin: 0 0 0 2px;
+		}
 
 		&--half {
-			width: 10px;
+			width: @starWidth / 2;
 		}
 	}
 }

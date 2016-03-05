@@ -8,10 +8,9 @@ import classNames from 'classnames';
 const RatingStars = ({ score, maxScore }) => {
 	const rating = score / maxScore * 5;
 	const decimal = rating % 1;
-	const addition = decimal === 0 ? 0 : (decimal <= 0.5 ? 0.5 : 1);
-	const starRating = Math.floor(rating) + addition;
-	const stars = [];
+	const half = decimal > 0 && decimal <= 0.5;
 	const maxStars = Math.ceil(rating);
+	const stars = [];
 
 	for(let i = 0; i < maxStars; i++) {
 		stars.push(
@@ -20,7 +19,7 @@ const RatingStars = ({ score, maxScore }) => {
 				 className={
 				 	classNames({
 				 		'ratingStars__star': true,
-				 		'ratingStars__star--half': i === maxStars - 1 && addition === 0.5
+				 		'ratingStars__star--half': i === maxStars - 1 && half
 				 	})
 				 }>
 			</div>
@@ -30,7 +29,7 @@ const RatingStars = ({ score, maxScore }) => {
 	return (
 		<div className="ratingStars">
 			<div className="ratingStars__score">
-				{rating.toPrecision(1)}
+				{rating.toPrecision(2)}
 			</div>
 			<span>
 				{stars}
