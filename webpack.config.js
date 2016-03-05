@@ -20,6 +20,10 @@ module.exports = {
 				loader: 'react-hot!babel'
 			},
 			{
+				test: /\.css$/,
+				loader: 'style!css'
+			},
+			{
 				test: /\.less$/,
 				loader: 'style!css!less'
 			}
