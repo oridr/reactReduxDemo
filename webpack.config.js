@@ -1,7 +1,7 @@
 'use strict';
 
 const webpack = require('webpack');
-const DEV_SERVER_PORT = 8081;
+const DEV_SERVER_PORT = 8082;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
