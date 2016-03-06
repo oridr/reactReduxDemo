@@ -35,7 +35,10 @@ module.exports = {
 	},
 
 	resolve: {
-		extensions: ['', '.js']
+		extensions: ['', '.js'],
+		alias: {
+			assets: __dirname + '/src/assets'
+		}
 	},
 
 	output: {
