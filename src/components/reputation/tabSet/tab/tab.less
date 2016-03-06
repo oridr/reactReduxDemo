@@ -1,7 +1,14 @@
 .tab {
 	display: block;
+	position: relative;
 	flex: 1;
 	height: 80px;
+	line-height: 80px;
+	text-align: center;
+
+	&__logo {
+		vertical-align: middle;
+	}
 
 	&:not(&--active) {
 		background: #f1f1f1;
