@@ -4,28 +4,10 @@ require('./tab.less');
 
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
+import LOGOS from 'config/logos';
 
 const getLogos = (name, active) => {
-	const logos = {
-		dhgate: {
-			color: require('assets/dhgatelogo.png'),
-			grey: require('assets/dhgatelogogrey.png')
-		},
-		amazon: {
-			color: require('assets/amazoncolor.png'),
-			grey: require('assets/amazongrey.png')
-		},
-		ebay: {
-			color: require('assets/ebaycolor.png'),
-			grey: require('assets/ebaygrey.png')
-		},
-		etsy: {
-			color: require('assets/etsycolor.png'),
-			grey: require('assets/etsygrey.png')
-		}
-	};
-
-	const selectedLogo = logos[name];
+	const selectedLogo = LOGOS[name];
 
 	return selectedLogo === undefined ? null : selectedLogo[active ? 'color' : 'grey']; // if logo not found, instead of null a path to generic logo
 };
