@@ -2,10 +2,11 @@
 
 require('./profile.less');
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import RatingBubble from './ratingBubble/RatingBubble';
+import Social from './social/Social';
 
-const Profile = ({ displayName, profileImage, socialInformation, totalRating, topSeller }) => {
+const Profile = ({ displayName, profileImage, socialInfo, totalRating, topSeller }) => {
 	const ratingDescriptor = totalRating === 0 ? '' : (totalRating > 0 ? 'positive' : 'negative');
 	const rating = Math.abs(totalRating).toFixed(1);
 
@@ -25,9 +26,19 @@ const Profile = ({ displayName, profileImage, socialInformation, totalRating, to
 				<h1 className="profile__header">{displayName}</h1>
 
 				<h2 className="profile__rating">{`${rating}% ${ ratingDescriptor } feedback`}</h2>
+
+				<Social socialInfo={socialInfo} />
 			</div>
 		</section>
 	);
+};
+
+Profile.propTypes = {
+	displayName: PropTypes.string.isRequired,
+	profileImage: PropTypes.string.isRequired,
+	socialInfo: PropTypes.object.isRequired,
+	totalRating: PropTypes.number.isRequired,
+	topSeller: PropTypes.bool
 };
 
 export default Profile;
