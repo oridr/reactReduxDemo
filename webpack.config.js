@@ -28,7 +28,7 @@ module.exports = {
 				loader: 'style!css!less'
 			},
 			{
-				test: /\.(png|jpg)$/,
+				test: /\.(png|jpg|svg)$/,
 				loader: 'url?limit=20480&name=[name].[ext]'
 			}
 		]
@@ -37,7 +37,8 @@ module.exports = {
 	resolve: {
 		extensions: ['', '.js'],
 		alias: {
-			assets: __dirname + '/src/assets'
+			assets: __dirname + '/src/assets',
+			config: __dirname + '/src/config'
 		}
 	},
 
