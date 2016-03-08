@@ -1,4 +1,7 @@
 'use strict';
+
+require('./reset.css');
+
 import React from 'react';
 import { render } from 'react-dom';
 
