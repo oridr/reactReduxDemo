@@ -1,0 +1,33 @@
+.network {
+	display: inline-block;
+	text-align: center;
+
+	&__logo {
+		display: inline-block;
+		max-height: 23px;
+		max-width: 30px;
+	}
+
+	&__connectionsContainer {
+		margin: 7px 0 0 0;
+		padding: 0 35px;
+	}
+
+	& + & > &__connectionsContainer {
+		border-left: 1px solid #c2c2c2;
+	}
+
+	&__connections {
+		margin: 0 0 4px 0;
+		font-size: 26px;
+		font-weight: 300;
+		color: #262626;
+	}
+
+	&__connectionsTitle {
+		font-size: 18px;
+		font-weight: 500;
+		color: #adadad;
+		text-transform: capitalize;
+	}
+}
