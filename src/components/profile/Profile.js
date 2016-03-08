@@ -1,23 +1,31 @@
 'use strict';
 
-import React from 'react';
+require('./profile.less');
 
-const Profile = ({ displayName, profileImage, socialInformation, totalRating, topRated }) => {
+import React from 'react';
+import RatingBubble from './ratingBubble/RatingBubble';
+
+const Profile = ({ displayName, profileImage, socialInformation, totalRating, topSeller }) => {
 	const ratingDescriptor = totalRating === 0 ? '' : (totalRating > 0 ? 'positive' : 'negative');
+	const rating = Math.abs(totalRating).toFixed(1);
 
 	return (
 		<section className="profile">
-			<img className="profile__image" src={profileImage}/>
+			<div className="profile__details">
+				<img className="profile__image" src={profileImage} />
 
-			{!!topRated &&
-				<div>topRated</div>
-			}
+				<div className="profile__ratingBubble">
+					<RatingBubble rating={rating} ratingDescriptor={ratingDescriptor} />
+				</div>
 
-			<h1 className="profile__header">{displayName}</h1>
+				{!!topSeller &&
+					<div className="profile__topSeller"></div>
+				}
 
-			{topRated === undefined ||
-				<h2 className="profile__subHeader">{`${totalRating}% ${ ratingDescriptor } feedback`}</h2>
-			}
+				<h1 className="profile__header">{displayName}</h1>
+
+				<h2 className="profile__rating">{`${rating}% ${ ratingDescriptor } feedback`}</h2>
+			</div>
 		</section>
 	);
 };
