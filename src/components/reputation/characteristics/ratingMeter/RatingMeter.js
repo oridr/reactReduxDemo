@@ -4,8 +4,9 @@ require('./ratingMeter.less');
 
 import React, { PropTypes } from 'react';
 
-const RatingMeter = ({ rating, maxRating }) => {
-	const ratio = rating / maxRating * 100;
+const RatingMeter = ({ score, maxScore, maxRating }) => {
+	const ratio = score / maxScore * 100;
+	const rating = Math.round(score / maxScore * maxRating);
 
 	return (
 		<div className="ratingMeter">
@@ -20,8 +21,8 @@ const RatingMeter = ({ rating, maxRating }) => {
 };
 
 RatingMeter.propTypes = {
-	rating: PropTypes.number.isRequired,
-	maxRating: PropTypes.number.isRequired
+	score: PropTypes.number.isRequired,
+	maxScore: PropTypes.number.isRequired
 };
 
 export default RatingMeter;

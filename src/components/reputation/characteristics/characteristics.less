@@ -1,0 +1,27 @@
+.characteristics {
+	&__item {
+		position: relative;
+		height: 24px;
+
+		&:not(:first-child) {
+			margin-top: 10px;
+		}
+	}
+
+	&__name, &__bar {
+		position: absolute;
+		top: 0;
+	}
+
+	&__name {
+		left: 0;
+		line-height: 24px;
+		font-size: 22px;
+		font-weight: 100;
+		color: #555555;
+	}
+
+	&__bar {
+		right: 0;
+	}
+}
