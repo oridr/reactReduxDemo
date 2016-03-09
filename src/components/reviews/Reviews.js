@@ -3,35 +3,51 @@
 require('./reviews.less');
 
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+import { selectReviewPage } from 'state/actionCreators';
 import Review from './review/Review';
 import Pager from './pager/Pager';
 
-const pageClick = (page) => console.log(page);
+const reviewPerPage = 3;
 
-const Reviews = ({ numberOfTotalReviews, currentReviews, currentPage, numberOfPages }) => (
-	<section className="reviews">
-		<h1 className="reviews__header">Reviews <span className="reviews__number">({numberOfTotalReviews}+)</span></h1>
+const Reviews = ({ currentReviews, currentPage, pageClick }) => {
+	const numberOfTotalReviews = (currentReviews || []).length;
+	const numberOfPages = Math.ceil(numberOfTotalReviews / reviewPerPage);
+	const startReviewIndex = currentPage * reviewPerPage;
+	const reviewsPage = currentReviews.slice(startReviewIndex, startReviewIndex + reviewPerPage);
 
-		<ul className="reviews__list">
-			{
-				currentReviews.map(({ review_type, review_content }, index) => (
-					<Review key={index} reviewContent={review_content} reviewType={review_type} />
-				))
-			}
-		</ul>
+	return (
+		<section className="reviews">
+			<h1 className="reviews__header">Reviews <span className="reviews__number">({numberOfTotalReviews}+)</span></h1>
 
-		<div className="reviews__pager">
-			<Pager currentPage={currentPage} totalPages={numberOfPages} onPageClick={pageClick} />
-		</div>
+			<ul className="reviews__list">
+				{
+					reviewsPage.map(({ review_type, review_content }, index) => (
+						<Review key={index} reviewContent={review_content} reviewType={review_type} />
+					))
+				}
+			</ul>
 
-	</section>
-);
-
-Reviews.propTypes = {
-	numberOfTotalReviews: PropTypes.number.isRequired,
-	currentReviews: PropTypes.array.isRequired,
-	currentPage: PropTypes.number.isRequired,
-	numberOfPages: PropTypes.number.isRequired
+			<div className="reviews__pager">
+				<Pager currentPage={currentPage} totalPages={numberOfPages} onPageClick={pageClick} />
+			</div>
+		</section>
+	);
 };
 
-export default Reviews;
+Reviews.propTypes = {
+	currentReviews: PropTypes.array.isRequired,
+	currentPage: PropTypes.number.isRequired
+};
+
+const mapStateToProps = ({ relevant_reputation, currentReputation, reviewPage }) => ({
+	currentReviews: relevant_reputation[currentReputation].reviews,
+	currentPage: reviewPage
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	pageClick: (page) => dispatch(selectReviewPage(page))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
