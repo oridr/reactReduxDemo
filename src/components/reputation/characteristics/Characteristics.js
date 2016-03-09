@@ -7,7 +7,7 @@ import RatingMeter from './ratingMeter/RatingMeter';
 
 const Characteristics = ({ stats }) => (
 	<ul className="characteristics">{
-		stats.map((stat, index) => (
+		stats && stats.map((stat, index) => (
 			<li key={index} className="characteristics__item">
 				<div className="characteristics__name">{stat.name}</div>
 				<div className="characteristics__bar">
@@ -19,7 +19,7 @@ const Characteristics = ({ stats }) => (
 );
 
 Characteristics.propTypes = {
-	stats: PropTypes.array.isRequired
+	stats: PropTypes.array
 }
 
 export default Characteristics;
