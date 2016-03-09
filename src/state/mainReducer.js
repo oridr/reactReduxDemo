@@ -13,6 +13,10 @@ const selectStore = (state, payload) => Object.assign({}, state, {
 	currentReputation: payload.currentReputationIndex
 });
 
+const pageReviews = (state, payload) => Object.assign({}, state, {
+	reviewPage: payload.currentPage
+});
+
 const mainReducer = (state = { loading: true }, action) => {
 	switch(action.type) {
 		case INIT:
@@ -20,6 +24,9 @@ const mainReducer = (state = { loading: true }, action) => {
 
 		case SELECT_STORE:
 			return selectStore(state, action.payload);
+
+		case PAGE_REVIEWS:
+			return pageReviews(state, action.payload);
 
 		default:
 			return state;
