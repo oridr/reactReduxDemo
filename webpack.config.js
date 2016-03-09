@@ -38,7 +38,8 @@ module.exports = {
 		extensions: ['', '.js'],
 		alias: {
 			assets: __dirname + '/src/assets',
-			config: __dirname + '/src/config'
+			config: __dirname + '/src/config',
+			state: __dirname + '/src/state'
 		}
 	},
 
