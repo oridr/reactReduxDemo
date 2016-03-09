@@ -3,6 +3,8 @@
 require('./review.less');
 
 import React, { PropTypes } from 'react';
+import EllipsisText  from 'react-ellipsis-text';
+
 import ReviewType from './reviewType/ReviewType';
 
 const Review = ({ reviewType, reviewContent }) => (
@@ -10,7 +12,7 @@ const Review = ({ reviewType, reviewContent }) => (
 		<div className="review__type">
 			<ReviewType type={reviewType} />
 		</div>
-		<q className="review__content">{reviewContent}</q>
+		<EllipsisText text={reviewContent} length={80} className="review__content" />
 	</li>
 );
 

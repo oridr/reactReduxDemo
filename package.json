@@ -42,9 +42,12 @@
   },
   "dependencies": {
     "classnames": "^2.2.3",
+    "material-ui": "^0.14.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
+    "react-ellipsis-text": "^0.2.0",
     "react-redux": "^4.0.5",
+    "react-tap-event-plugin": "^0.2.2",
     "redux": "^3.0.5"
   }
 }
