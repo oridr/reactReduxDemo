@@ -8,12 +8,9 @@ html {
 
 .widget {
 	@mainBorder: 1px solid rgba(236, 236, 236, 0.9);
-
-	display: flex;
 	position: relative;
 	width: 1406px;
 	height: 360px;
-	padding: 37px 0 0 0;
 	border: @mainBorder;
 	background: #f7f7f7 repeating-linear-gradient(135deg, transparent 0, transparent 7px, #f2f2f2 7px, #f2f2f2 7.5px);
 	background-size: 11px 11px;
@@ -35,6 +32,15 @@ html {
 		content: 'My Online Reputation'
 	}
 
+	&__container {
+		display: flex;
+		position: absolute;
+		top: 37px;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
 	&__area {
 		flex: 1;
 		height: 100%;
@@ -42,5 +48,26 @@ html {
 		& + & {
 			border-left: @mainBorder;
 		}
+	}
+
+	&__spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+		background: #f5af00;
+		margin: -20px -20px 0 0;
+		animation: sk-rotateplane 1.2s infinite ease-in-out;
+	}
+
+	@keyframes sk-rotateplane {
+		0% {
+			transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+		} 50% {
+			  transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+		  } 100% {
+				transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+			}
 	}
 }
