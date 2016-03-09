@@ -3,10 +3,12 @@
 require('./profile.less');
 
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 import RatingBubble from './ratingBubble/RatingBubble';
 import Social from './social/Social';
 
-const Profile = ({ displayName, profileImage, socialInfo, totalRating, topSeller }) => {
+export const Profile = ({ displayName, profileImage, socialInfo, totalRating, topSeller }) => {
 	const ratingDescriptor = totalRating === 0 ? '' : (totalRating > 0 ? 'positive' : 'negative');
 	const rating = Math.abs(totalRating).toFixed(1);
 
@@ -38,7 +40,15 @@ Profile.propTypes = {
 	profileImage: PropTypes.string.isRequired,
 	socialInfo: PropTypes.object.isRequired,
 	totalRating: PropTypes.number.isRequired,
-	topSeller: PropTypes.bool
+	topSeller: PropTypes.bool.isRequired
 };
 
-export default Profile;
+const mapStateToProps = ({ display_name, profile_image_link, social_information, total_rating, relevant_reputation, currentReputation }) => ({
+	displayName: display_name,
+	profileImage: profile_image_link,
+	socialInfo: social_information,
+	totalRating: total_rating,
+	topSeller: !!relevant_reputation[currentReputation].top_rated
+});
+
+export default connect(mapStateToProps)(Profile);
