@@ -12,14 +12,14 @@ const getLogos = (name, active) => {
 	return selectedLogo === undefined ? null : selectedLogo[active ? 'color' : 'grey']; // if logo not found, instead of null a path to generic logo
 };
 
-const Tab = ({ name, active, onTabSelect }) => (
+const Tab = ({ name, active, onTabSelect, index }) => (
 	<div className={
 			classNames({
 				tab: true,
 				'tab--active': active
 			})
 		}
-	 	onClick={() => onTabSelect(name) }>
+	 	onClick={() => onTabSelect(index) }>
 		<img className="tab__logo" src={ getLogos(name, active) } />
 	</div>
 );
@@ -27,7 +27,8 @@ const Tab = ({ name, active, onTabSelect }) => (
 Tab.propTypes = {
 	name: PropTypes.string.isRequired,
 	active: PropTypes.bool,
-	onTabSelect: PropTypes.func.isRequired
+	onTabSelect: PropTypes.func.isRequired,
+	index: PropTypes.number.isRequired
 };
 
 export default Tab;
